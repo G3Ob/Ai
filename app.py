@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # Load TinyLlama model once
 print("Loading model...")
-model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+model_id = AutoModelForCausalLM.from_pretrained("./tinyllama-finetuned")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(model_id)
 pipe = pipeline("text-generation", model=model, tokenizer=tokenizer, max_new_tokens=256)
